@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Michael Momoh — Web Developer and Computer Engineering student.">
+<meta name="author" content="Michael Momoh">
+<title>Michael Momoh | Web Developer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#07111f;color:#fff;line-height:1.7}
+body.light{background:#f5f7fb;color:#101828}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+.container{width:90%;max-width:1150px;margin:auto}
+:root{--primary:#00d9ff;--secondary:#6c63ff;--bg:#07111f;--card:#0d1b2d;--text:#fff;--muted:#9ba8ba;--border:#243247}
+body.light{--bg:#f5f7fb;--card:#fff;--text:#101828;--muted:#667085;--border:#d9dee8}
+nav{position:fixed;top:0;width:100%;height:72px;z-index:1000;background:rgba(7,17,31,.92);backdrop-filter:blur(15px);border-bottom:1px solid var(--border)}
+body.light nav{background:rgba(255,255,255,.92)}
+.nav-container{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;font-weight:800}.logo span,.hero h1 span{color:var(--primary)}
+.nav-links,.nav-buttons,.buttons,.contact-links{display:flex;align-items:center;gap:20px}
+.nav-links a{color:var(--muted)}.nav-links a:hover{color:var(--primary)}
+.theme-btn,.menu-btn{background:transparent;border:1px solid var(--border);color:var(--text);width:40px;height:40px;border-radius:8px;cursor:pointer;font-size:18px}
+.menu-btn{display:none}
+#home{min-height:100vh;display:flex;align-items:center;padding:100px 0 70px}
+.hero,.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center}
+.intro{color:var(--primary);font-size:18px;font-weight:bold;margin-bottom:12px}
+.hero h1{font-size:clamp(45px,7vw,78px);line-height:1.05;margin-bottom:20px}
+.hero h2{font-size:clamp(20px,3vw,28px);color:var(--muted);margin-bottom:20px}
+.hero-description{color:var(--muted);max-width:650px;font-size:18px;margin-bottom:30px}
+.buttons{flex-wrap:wrap}.btn{display:inline-block;padding:13px 23px;border-radius:8px;font-weight:bold;transition:.3s}
+.primary-btn{background:var(--primary);color:#06111e}.secondary-btn{border:1px solid var(--primary);color:var(--primary)}.btn:hover{transform:translateY(-4px)}
+.photo-container{display:flex;justify-content:center}.photo-frame{width:350px;height:420px;padding:8px;border-radius:30px;background:linear-gradient(135deg,var(--primary),var(--secondary));box-shadow:0 25px 70px rgba(0,217,255,.15)}
+.photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:24px;background:#101b2b}
+section{padding:100px 0}.section-title{text-align:center;margin-bottom:55px}.section-title h2{font-size:40px;margin-bottom:10px}.section-title p,.about-text p,.skill-card p,.project p,.timeline-item p,.service p,.why-card p,.contact-box>p{color:var(--muted)}
+.about-text p{margin-bottom:18px}.highlight{color:var(--primary);font-weight:bold}
+.stats,.skills,.services,.why-grid,.projects{display:grid;gap:20px}.stats{grid-template-columns:1fr 1fr}.skills,.services,.why-grid{grid-template-columns:repeat(3,1fr)}.projects{grid-template-columns:repeat(2,1fr)}
+.stat,.skill-card,.project,.service,.why-card,.contact-box{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:30px}
+.stat h3{font-size:35px;color:var(--primary)}.skill-icon,.service-icon{font-size:35px;margin-bottom:15px}
+.skill-card:hover,.project:hover,.stat:hover{transform:translateY(-6px)}.skill-card,.project,.stat{transition:.3s}
+.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:35px}.filter-btn{padding:9px 17px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:20px;cursor:pointer}.filter-btn.active,.filter-btn:hover{background:var(--primary);color:#06111e}
+.project h3{font-size:22px;margin-bottom:10px}.project p{margin-bottom:20px}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:5px 11px;border-radius:20px;background:rgba(0,217,255,.08);color:var(--primary);font-size:13px}.project-link{display:inline-block;margin-top:20px;color:var(--primary);font-weight:bold}
+.timeline{max-width:850px;margin:auto}.timeline-item{position:relative;border-left:2px solid var(--primary);padding:0 0 40px 30px}.timeline-item:before{content:"";position:absolute;left:-8px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--primary)}.timeline-item span{color:var(--primary);font-size:14px;font-weight:bold}
+.contact-box{max-width:850px;margin:auto;text-align:center;padding:55px 30px;border-radius:25px}.contact-box h2{font-size:35px;margin-bottom:15px}.contact-box>p{max-width:650px;margin:0 auto 30px}.contact-links{justify-content:center;flex-wrap:wrap}
+footer{padding:30px 0;border-top:1px solid var(--border);text-align:center;color:var(--muted)}
+#topBtn{position:fixed;right:20px;bottom:20px;width:45px;height:45px;border:0;border-radius:50%;background:var(--primary);font-size:20px;cursor:pointer;display:none}
+@media(max-width:850px){.menu-btn{display:block}.nav-links{position:absolute;top:72px;right:-100%;width:100%;background:var(--bg);border-bottom:1px solid var(--border);flex-direction:column;padding:30px;transition:.3s}.nav-links.active{right:0}.hero,.about-grid{grid-template-columns:1fr}.hero{text-align:center}.hero-description{margin:0 auto 30px}.buttons{justify-content:center}.photo-container{order:-1}.photo-frame{width:270px;height:330px}.skills,.services,.why-grid,.projects{grid-template-columns:1fr}.stats{margin-top:20px}}
+@media(max-width:500px){section{padding:75px 0}.hero h1{font-size:43px}.section-title h2{font-size:32px}.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><div class="container nav-container">
+<a href="#home" class="logo">Michael<span>.</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#journey">Journey</a></li><li><a href="#contact">Contact</a></li>
+</ul>
+<div class="nav-buttons"><button class="theme-btn" id="themeBtn">☀️</button><button class="menu-btn" id="menuBtn">☰</button></div>
+</div></nav>
+
+<section id="home"><div class="container hero">
+<div><div class="intro">Hello, I'm</div><h1>Michael <span>Momoh</span></h1><h2><span id="typing"></span></h2><p class="hero-description">I build responsive websites, interactive applications and digital experiences while developing my software and engineering skills.</p><div class="buttons"><a href="#projects" class="btn primary-btn">Explore My Work</a><a href="#contact" class="btn secondary-btn">Let's Connect</a></div></div>
+<div class="photo-container"><div class="photo-frame"><img src="Mikesuit.jpg" alt="Michael Momoh - Web Developer"></div></div>
+</div></section>
+
+<section id="about"><div class="container"><div class="section-title"><h2>About Me</h2><p>Building skills through practical experience.</p></div><div class="about-grid"><div class="about-text">
+<p>I'm <span class="highlight">Michael Momoh</span>, a Computer Engineering student interested in web development, software and technology.</p>
+<p>I learn by building, turning ideas into functional solutions people can use.</p>
+<p>My experience includes <span class="highlight">HTML, CSS, JavaScript and PHP</span>, plus GitHub and browser-based tools.</p>
+<p>I've built games, calculators, chatbots and web forms while improving my programming and design skills.</p>
+<p>I'm continuously learning and seeking opportunities to contribute, collaborate and create useful solutions.</p>
+</div><div class="stats">
+<div class="stat"><h3 data-target="4">0</h3><p>Core Web Technologies</p></div><div class="stat"><h3 data-target="4">0</h3><p>Featured Projects</p></div><div class="stat"><h3>100%</h3><p>Learning Mindset</p></div><div class="stat"><h3>∞</h3><p>Room to Grow</p></div>
+</div></div></div></section>
+
+<section id="skills"><div class="container"><div class="section-title"><h2>Technical Skills</h2><p>Technologies I'm learning and using.</p></div><div class="skills">
+<div class="skill-card"><div class="skill-icon">🌐</div><h3>HTML</h3><p>Structured, semantic web pages.</p></div>
+<div class="skill-card"><div class="skill-icon">🎨</div><h3>CSS</h3><p>Responsive layouts and interfaces.</p></div>
+<div class="skill-card"><div class="skill-icon">⚡</div><h3>JavaScript</h3><p>Logic, interactivity and dynamic websites.</p></div>
+<div class="skill-card"><div class="skill-icon">🐘</div><h3>PHP</h3><p>Backend and server-side programming.</p></div>
+<div class="skill-card"><div class="skill-icon">🔧</div><h3>Git & GitHub</h3><p>Managing and publishing code.</p></div>
+<div class="skill-card"><div class="skill-icon">📱</div><h3>Responsive Design</h3><p>Interfaces for all screen sizes.</p></div>
+</div></div></section>
+
+<section id="projects"><div class="container"><div class="section-title"><h2>My Projects</h2><p>Practical projects I've built while learning.</p></div><div class="filters"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="javascript">JavaScript</button><button class="filter-btn" data-filter="web">Web</button></div><div class="projects">
+<div class="project" data-category="javascript"><h3>🎯 Number Guessing Game</h3><p>An interactive game with difficulty levels, guesses, validation and restart functionality.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a href="#" class="project-link">View Project →</a></div>
+<div class="project" data-category="javascript"><h3>🧮 GPA Calculator</h3><p>A web calculator that helps students calculate GPA using interactive forms.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a href="#" class="project-link">View Project →</a></div>
+<div class="project" data-category="web"><h3>🤖 Web Chatbot</h3><p>A chatbot exploring interactive interfaces and conversational technology.</p><div class="tags"><span class="tag">Web Development</span><span class="tag">JavaScript</span></div><a href="#" class="project-link">View Project →</a></div>
+<div class="project" data-category="web"><h3>📅 Booking Form</h3><p>A responsive form for collecting user information.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Forms</span></div><a href="#" class="project-link">View Project →</a></div>
+</div></div></section>
+
+<section id="journey"><div class="container"><div class="section-title"><h2>My Journey</h2><p>My development and learning journey.</p></div><div class="timeline">
+<div class="timeline-item"><span>EDUCATION</span><h3>Computer Engineering</h3><p>Studying Computer Engineering at Edo State University.</p></div>
+<div class="timeline-item"><span>WEB DEVELOPMENT</span><h3>Started Building Websites</h3><p>Learned HTML and CSS before progressing to JavaScript.</p></div>
+<div class="timeline-item"><span>PROJECTS</span><h3>Turning Ideas Into Applications</h3><p>Created games, calculators, chatbots and web forms.</p></div>
+<div class="timeline-item"><span>CURRENT FOCUS</span><h3>Backend Development</h3><p>Learning PHP, databases, deployment and full-stack development.</p></div>
+<div class="timeline-item"><span>FUTURE</span><h3>Building Digital Products</h3><p>Combining engineering and software to solve practical problems.</p></div>
+</div></div></section>
+
+<section id="services"><div class="container"><div class="section-title"><h2>What I Can Build</h2><p>Areas where I can create digital solutions.</p></div><div class="services">
+<div class="service"><div class="service-icon">💻</div><h3>Business Websites</h3><p>Responsive websites for businesses, brands and professionals.</p></div>
+<div class="service"><div class="service-icon">⚡</div><h3>Interactive Web Apps</h3><p>Calculators, games, forms, dashboards and tools.</p></div>
+<div class="service"><div class="service-icon">🚀</div><h3>Digital Prototypes</h3><p>Functional prototypes for testing and improvement.</p></div>
+</div></div></section>
+
+<section><div class="container"><div class="section-title"><h2>Why Work With Me?</h2><p>What I bring as a developing technology professional.</p></div><div class="why-grid">
+<div class="why-card"><div class="skill-icon">🧠</div><h3>Problem Solving</h3><p>I break problems down and develop practical solutions.</p></div>
+<div class="why-card"><div class="skill-icon">📚</div><h3>Continuous Learning</h3><p>I develop new skills and explore new technologies.</p></div>
+<div class="why-card"><div class="skill-icon">🛠️</div><h3>Builder's Mindset</h3><p>Every project is an opportunity to improve.</p></div>
+<div class="why-card"><div class="skill-icon">🎯</div><h3>Growth Focused</h3><p>I seek opportunities to learn and contribute.</p></div>
+<div class="why-card"><div class="skill-icon">💡</div><h3>Product Thinking</h3><p>I consider the problem a product solves and its users.</p></div>
+<div class="why-card"><div class="skill-icon">🤝</div><h3>Collaboration</h3><p>I'm open to working with developers, designers and businesses.</p></div>
+</div></div></section>
+
+<section id="contact"><div class="container"><div class="contact-box"><h2>Let's Build Something</h2><p>Have a project idea or want to discuss technology? I'd be happy to hear from you.</p><div class="contact-links">
+<a href="mailto: michaelmomoh188@gmail.com@example.com" class="btn primary-btn">📧 Email Me</a><a href="https://github.com/"michaelanthony2104-boop.github.io" target="_blank" class="btn secondary-btn">GitHub</a><a href="https://wa.me/08088590122" target="_blank" class="btn secondary-btn">WhatsApp</a>
+</div></div></div></section>
+
+<footer><div class="container"><p>© <span id="year"></span> Michael Momoh. </p></div></footer>
+<button id="topBtn">↑</button>
+
+<script>
+const menuBtn=document.getElementById("menuBtn"),navLinks=document.getElementById("navLinks");
+menuBtn.onclick=()=>navLinks.classList.toggle("active");
+document.querySelectorAll(".nav-links a").forEach(a=>a.onclick=()=>navLinks.classList.remove("active"));
+
+const themeBtn=document.getElementById("themeBtn");
+themeBtn.onclick=()=>{document.body.classList.toggle("light");themeBtn.textContent=document.body.classList.contains("light")?"🌙":"☀️"};
+
+const typing=document.getElementById("typing"),words=["Web Developer","Computer Engineering Student","JavaScript Developer","Technology Enthusiast"];
+let wi=0,li=0,deleting=false;
+function typeEffect(){let word=words[wi];typing.textContent=word.substring(0,deleting?--li:++li);if(li===word.length){deleting=true;return setTimeout(typeEffect,1500)}if(li===0){deleting=false;wi=(wi+1)%words.length}setTimeout(typeEffect,deleting?60:100)}
+typeEffect();
+
+const filterButtons=document.querySelectorAll(".filter-btn"),projects=document.querySelectorAll(".project");
+filterButtons.forEach(btn=>btn.onclick=()=>{filterButtons.forEach(b=>b.classList.remove("active"));btn.classList.add("active");projects.forEach(p=>p.style.display=btn.dataset.filter==="all"||p.dataset.filter===btn.dataset.filter?"block":"none")});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+const topBtn=document.getElementById("topBtn");
+window.onscroll=()=>topBtn.style.display=scrollY>400?"block":"none";
+topBtn.onclick=()=>scrollTo({top:0,behavior:"smooth"});
+
+let started=false;
+window.addEventListener("scroll",()=>{if(started||document.getElementById("about").getBoundingClientRect().top>innerHeight-100)return;started=true;document.querySelectorAll("[data-target]").forEach(c=>{let n=0,target=+c.dataset.target;let timer=setInterval(()=>{c.textContent=++n;if(n>=target)clearInterval(timer)},150)})});
+</script>
+</body>
+</html>
